@@ -3,7 +3,7 @@
 
 For learning how git works internally and to implement the basic git commands.
 
-The entry point for your Git implementation is in `app/main.py`
+The entry point for the Git implementation is in `app/main.py`
 
 # Running locally
 
@@ -20,6 +20,11 @@ python3 app/main.py hash_object -w <file_path>
 To cat_file
 ```
 python3 app/main.py cat_file -p <hash>
+```
+
+To print tree
+```
+python3 app/main.py ls-tree <hash-of-tree>
 ```
 
 
