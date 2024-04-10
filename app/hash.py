@@ -16,7 +16,7 @@ def hash_object(flag:str, filename:str):
     #encoding is needed for compression and hashing
     encoded_content = content.encode('utf-8')
 
-    # hashing to get 40 character sha1 hash
+    # hashing to get 40 character sha1 checksum hash
     sha1_hash = hashlib.sha1(encoded_content)
     sha1_hash = sha1_hash.hexdigest()
 
@@ -31,32 +31,3 @@ def hash_object(flag:str, filename:str):
         f.write(compressed_content)
 
     return sha1_hash
-
-def cat_file(flag:str, obj:str):
-    try:
-        __path = os.getcwd() +  f'/.git/objects/{obj[:2]}/{obj[2:]}'
-        with open(__path, 'rb') as f:
-            raw_object_content = zlib.decompress(f.read())
-
-        # for blob file, the format of blob is  -> blob size<null>content
-        # first we have to extract the header, then the content
-        header, content = raw_object_content.split(b'\x00', maxsplit=1)
-
-        object_type, content_size = header.decode().split()
-
-        content = content.decode()
-
-        return content
-    except UnicodeDecodeError as ud:
-        print("Something went wrong due to: ", ud)
-    except Exception as err:
-        print(err)
-        print("Maybe try the usage as: your_git.sh -p <object>")
-
-def init():
-    os.mkdir(".git")
-    os.mkdir(".git/objects")
-    os.mkdir(".git/refs")
-    with open(".git/HEAD", "w") as f:
-        f.write("ref: refs/heads/main\n")
-    print("Initialized git directory")
