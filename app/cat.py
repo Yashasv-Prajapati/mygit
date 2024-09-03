@@ -13,9 +13,13 @@ def cat_file(flag:str, obj:str):
 
     except UnicodeDecodeError as ud:
         print("Something went wrong due to: ", ud)
+    except FileNotFoundError as fnf:
+        print("Could find the file corresponding to this hash, make sure you're in the correct directory")
     except Exception as err:
         print(err)
         print("Maybe try the usage as: your_git.sh -p <object>")
+
+    exit(0)
 
 # Figure out the type of object and return the content appropriately
 def cat_blob(obj_hash:str):

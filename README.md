@@ -28,7 +28,7 @@ python3 app/main.py ls-tree <hash-of-tree>
 ```
 
 
-# Using the provided script[breaking currently]
+# Using the provided script [breaking currently]
 I suggest executing `mygit.sh` in a different folder when testing locally.
 For example:
 
