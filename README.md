@@ -27,6 +27,11 @@ To print tree
 python3 app/main.py ls-tree <hash-of-tree>
 ```
 
+To update index
+```
+python3 app/main.py update-index --add/--remove <filename>
+```
+
 
 # Using the provided script [breaking currently]
 I suggest executing `mygit.sh` in a different folder when testing locally.

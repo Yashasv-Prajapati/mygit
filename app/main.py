@@ -35,9 +35,10 @@ def main():
 
     elif command == "update-index":
         flag = sys.argv[2]
+        filename = sys.argv[3]
         if flag not in ['--add', '--remove']:
             raise ValueError('Flag corresponding to this command is not recognized.\nUsage: mygit update-index --add or mygit update-index --remove')
-        update_index(flag)
+        update_index(flag, filename)
     else:
         raise RuntimeError(f"Unknown command #{command}")
 
